@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import dataAccess.UserDA;
+import model.User;
+
 public class UserUI {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
@@ -34,11 +37,17 @@ public class UserUI {
 		confirmButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
+				User user = new User();
+				user.setName(textFields[0].getText().toString());
+				user.setPassword(textFields[1].getText().toString());
+				user.setCity(textFields[3].getText().toString());
+				user.setGender(textFields[4].getText().toString());
+				user.setEmail(textFields[5].getText().toString());
 				
+				UserDA userDA = new UserDA(user);
 			}
 		});
-		
+		mainPanel.add(confirmButton);
 		frame.add(mainPanel,BorderLayout.CENTER);
 		
 		frame.setVisible(true);
