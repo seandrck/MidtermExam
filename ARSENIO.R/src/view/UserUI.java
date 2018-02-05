@@ -13,7 +13,7 @@ public class UserUI {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 		frame.setLayout(new BorderLayout());
-		frame.setSize(400,550);
+		frame.setSize(400,300);
 		frame.setBackground(Color.white);
 		
 		String[] labels = {"Name","Password","Confirm Password","City","Gender","Email"};
@@ -46,6 +46,12 @@ public class UserUI {
 				
 				UserDA userDA = new UserDA(user);
 				userDA.setUser();
+				
+				for(int ctr = 0; ctr<6; ctr++){
+					textFields[ctr].setText("");
+				}
+				
+				JOptionPane.showMessageDialog (null, "Your account is successfully encoded.");
 			}
 		});
 		mainPanel.add(confirmButton);
