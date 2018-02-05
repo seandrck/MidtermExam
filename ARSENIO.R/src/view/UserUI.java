@@ -45,6 +45,7 @@ public class UserUI {
 				user.setEmail(textFields[5].getText().toString());
 				
 				UserDA userDA = new UserDA(user);
+				userDA.setUser();
 			}
 		});
 		mainPanel.add(confirmButton);
