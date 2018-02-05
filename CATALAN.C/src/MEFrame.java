@@ -1,6 +1,9 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintStream;
 
 public class MEFrame extends JFrame
 {
@@ -10,6 +13,12 @@ public class MEFrame extends JFrame
 	
 	public MEFrame()
 	{	
+		try
+		{
+		MEgettersetter gs = new MEgettersetter();
+		File output = new File("D:/Celine/Documents/Eclipse/MidtermExam/trunk/CATALAN.C/output.txt");
+		PrintStream print = new PrintStream(output);
+		
 		JLabel name = new JLabel("NAME");
 		name.setBounds(30,20,100,20);
 		name.setFont(new Font("Caladea", Font.BOLD, 20));
@@ -51,15 +60,29 @@ public class MEFrame extends JFrame
 		JButton submit = new JButton("SUBMIT");
 		submit.setBounds(30, 420, 100, 30);
 		submit.setBackground(Color.GRAY);
-		/*submit.addActionListener(new ActionListener()
+		submit.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				print.append(nameTf.getText()+ "\n");
-				print.append(rollNoTf.getText()+"\n");
+				gs.setName(nameTf.getText());
+				gs.setPassword(passwordTf.getText());
+				gs.setConPass(conPassTf.getText());
+				gs.setCity(cityTf.getText());
+				gs.setGender(genderTf.getText());
+				gs.setGmail(gmailTf.getText());
+				
+				String outputName = gs.getName();
+				String outputPassword = gs.getPassword();
+				String outputConPass = gs.getConPass();
+				String outputCity = gs.getCity();
+				String outputGender = gs.getGender();
+				String outputGmail = gs.getGmail();
+				
+				print.println(outputName + ";" + outputPassword + ";" + outputConPass + ";"
+						+ outputCity + ";" + outputGender + ";" + outputGmail );
 			}
 			}
-		);*/
+		);
 		
 		setVisible(true);
 		setSize(500,500);
@@ -82,9 +105,14 @@ public class MEFrame extends JFrame
 		add(city);
 		add(gender);
 		add(gmail);
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 	public static void main(String[]args)
-	{
+	{		
 		new MEFrame();
 	}
 }
