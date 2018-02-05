@@ -16,7 +16,7 @@ public class MEFrame extends JFrame
 		try
 		{
 		MEgettersetter gs = new MEgettersetter();
-		File output = new File("D:/Celine/Documents/Eclipse/MidtermExam/trunk/CATALAN.C/output.txt");
+		File output = new File("D:/Celine/Documents/Eclipse/MidtermExam/trunk/CATALAN.C/output");
 		PrintStream print = new PrintStream(output);
 		
 		JLabel name = new JLabel("NAME");
